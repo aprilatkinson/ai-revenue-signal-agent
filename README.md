@@ -35,31 +35,58 @@ Fit Score: 85
 Route Recommendation: Route to Solutions
 Confidence: 0.8
 
-Generated SDR message:
+SDR outreach suggestion
 Hi Elena, I see you're leading the engineering organization at Acme Payments
 and are evaluating platforms for expansion. I'd love to discuss how our
 solution can support your integration requirements.
 
+## Lead Signal Extraction
+
+The AI classifier analyzes the message content submitted by the lead along with basic contact metadata.
+
+Example input:
+
+{
+  "firstname": "Elena",
+  "lastname": "Meyer",
+  "email": "elena.meyer@acmepayments.com",
+  "jobtitle": "VP Engineering",
+  "company": "Acme Payments",
+  "website": "acmepayments.com",
+  "message": "We are evaluating platforms that could support our expansion across Europe. Our engineering team is reviewing API integration, security architecture, and implementation timeline."
+}
+
+The AI system extracts structured signals from the message:
+
+Signal	Description
+Intent	What the lead is trying to do (integration, pricing, support)
+Persona	Type of buyer (technical, executive, business)
+Buying Stage	Early research, evaluation, ready to buy
+Urgency	Estimated timeline
+Fit Score	Estimated relevance for sales
+Route Recommendation	Where the lead should go
+
 ## Architecture
+Lead Form Submission
+        │
+        ▼
 HubSpot Contact Created
         │
         ▼
-HubSpot Webhook
+Webhook Trigger
         │
         ▼
-FastAPI Endpoint
-/webhooks/hubspot
+Revenue Signal Agent
         │
-        ▼
-Qualification Pipeline
+        ├─ Fetch Contact Data
         │
-        ├─ Fetch Contact (HubSpot API)
+        ├─ Extract Message Content
         │
         ├─ AI Classification
         │
-        ├─ Build CRM Fields
+        ├─ Generate SDR Response
         │
-        └─ Write Results Back to HubSpot
+        └─ Update CRM Fields
 ## Tech Stack
 Backend API
 - FastAPI
