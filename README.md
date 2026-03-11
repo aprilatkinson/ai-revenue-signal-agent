@@ -88,18 +88,18 @@ Revenue Signal Agent
         │
         └─ Update CRM Fields
 ## Tech Stack
-Backend API
+Backend 
 - FastAPI
 -  Uvicorn
+-  Python 3.11
+- Pydantic
+- HTTPX
 AI Layer
 - OpenAI
 - LangGraph (agent pipeline orchestration)
 CRM Integration
 - HubSpot API Client
-Infrastructure
-- Python 3.11
-- Pydantic
-- HTTPX
+- Infrastructure
 
 ## Example Workflow
 Step 1 — New Contact
